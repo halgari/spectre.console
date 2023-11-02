@@ -45,6 +45,7 @@ public sealed class AnsiConsoleFactory
 
         var profile = new Profile(output, encoding);
 
+
         profile.Capabilities.ColorSystem = colorSystem;
         profile.Capabilities.Ansi = supportsAnsi;
         profile.Capabilities.Links = supportsAnsi && !legacyConsole;
@@ -59,8 +60,11 @@ public sealed class AnsiConsoleFactory
             settings.Enrichment,
             settings.EnvironmentVariables);
 
+        var input = settings.In ?? new DefaultInput(profile);
+
         return new AnsiConsoleFacade(
             profile,
+            input,
             settings.ExclusivityMode ?? new DefaultExclusivityMode());
     }
 
