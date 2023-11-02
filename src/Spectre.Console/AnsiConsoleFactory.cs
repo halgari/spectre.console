@@ -45,7 +45,6 @@ public sealed class AnsiConsoleFactory
 
         var profile = new Profile(output, encoding);
 
-
         profile.Capabilities.ColorSystem = colorSystem;
         profile.Capabilities.Ansi = supportsAnsi;
         profile.Capabilities.Links = supportsAnsi && !legacyConsole;
